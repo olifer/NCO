@@ -31,7 +31,7 @@ PACKAGE nco_conf IS
 		PORT(
 			clk: IN STD_LOGIC;
 			address: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-			fsin: OUT SIGNED(N DOWNTO 0)
+			fsin: OUT STD_LOGIC_VECTOR(N DOWNTO 0)
 		);
 	 END COMPONENT;
 	 ------------------------------------------------------------------

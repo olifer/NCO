@@ -20,10 +20,10 @@ END NCO;
 
 ARCHITECTURE NCO_IMPL OF NCO IS
 	SIGNAL addr: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-	SIGNAL fsin_loc: SIGNED(N DOWNTO 0);
+	SIGNAL fsin_loc: STD_LOGIC_VECTOR(N DOWNTO 0);
 BEGIN
 	address <= addr;
-	fsin <= STD_LOGIC_VECTOR(fsin_loc);
+	fsin <= fsin_loc;--STD_LOGIC_VECTOR(fsin_loc);
 	
 	phase_acc: PA 
 		GENERIC MAP(W_ADDR,W_ACCUM)

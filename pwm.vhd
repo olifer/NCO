@@ -26,7 +26,7 @@ BEGIN
 	BEGIN
 		IF(nrst='0') THEN
 			accum <= (OTHERS=>'0');
-		ELSIF(falling_edge(clk)) THEN
+		ELSIF(rising_edge(clk)) THEN -- falling_edge
 			accum <= ('0'&accum(N DOWNTO 0))+('0'&sin_shifted_unsig);
 		END IF;
 	END PROCESS;

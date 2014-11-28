@@ -9,17 +9,17 @@ ENTITY WAVE_RES IS
 	PORT(
 		clk: IN STD_LOGIC;
 		address: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-		fsin: OUT SIGNED(N DOWNTO 0)
+		fsin: OUT STD_LOGIC_VECTOR(N DOWNTO 0) -- signed wave
 	);
 END WAVE_RES;
 
 ARCHITECTURE WAVE_RES_IMPL OF WAVE_RES IS
 	SIGNAL lut_addr: STD_LOGIC_VECTOR(N-1 DOWNTO 0):=(OTHERS=>'0');
-	SIGNAL fsin_quater: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+	SIGNAL fsin_quater: STD_LOGIC_VECTOR(N-1 DOWNTO 0):=(OTHERS=>'0');
 	SIGNAL sign:STD_LOGIC:='0';
 BEGIN
-	fsin <= SIGNED('0'&fsin_quater) WHEN sign='0' ELSE -SIGNED('0'&fsin_quater);
-	--fsin <= -SIGNED('0'&fsin_quater);
+	fsin <= '0'&fsin_quater WHEN sign='0' ELSE STD_LOGIC_VECTOR(-SIGNED('0'&fsin_quater));
+	
 	lut: F_LUT 
 		GENERIC MAP(N=>N) 
 		PORT MAP(clk,lut_addr,fsin_quater);
